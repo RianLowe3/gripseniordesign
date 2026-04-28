@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRIP – Senior Design (Group 21)</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <nav class="topbar" id="navbar">
+    <div class="topbar-left">
+      <a href="#home" class="brand-link">
+        <div class="logo-wrap">
+          <img src="hand.png" alt="GRIP hand logo" class="logo-hand">
+          <img src="grip-text.png" alt="GRIP text logo" class="logo-text">
+        </div>
+      </a>
+      <div class="divider"></div>
+      <img src="ucf-logo.png" alt="UCF logo" class="ucf-logo">
+    </div>
+
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+    <ul class="topbar-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li class="dropdown">
+        <a href="#overview" class="nav-link">Overview</a>
+        <ul class="dropdown-menu">
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#features">System Features</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#specs" class="nav-link">Specs</a>
+        <ul class="dropdown-menu">
+          <li><a href="#specs">Key Specifications</a></li>
+          <li><a href="#demo">Performance</a></li>
+        </ul>
+      </li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#documents" class="nav-link">Documents</a></li>
+      <li><a href="#demo" class="nav-link">Demo</a></li>
+      <li><a href="#team" class="nav-link">Team</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-left">
+      <h1>Human Motion.<br><span>Recreated.</span></h1>
+      <p class="hero-subtitle">
+        GRIP is a wearable glove and robotic hand system that captures human finger motion
+        and replicates it in real time—enabling safe, remote interaction in hazardous environments.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#documents">View Documents</a>
+        <a class="button ghost" href="Final Demonstration Video.mp4" target="_blank" rel="noopener">Watch Demo</a>
+      </div>
+      <div class="hero-meta">
+        <div class="pill">Wireless control</div>
+        <div class="pill">Low-latency motion mimic</div>
+        <div class="pill">Safety-focused remote interaction</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" class="section">
+    <h2>Project Overview</h2>
+    <div class="overview-lead card">
+      <p>
+        GRIP enables a user-controlled robotic hand to mirror real-time finger motion through
+        a wearable glove, allowing safer remote interaction in hazardous environments.
+      </p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="overview-number">01</div>
+        <h3>Real-Time Control</h3>
+        <p>Finger motion is captured by the glove and transmitted wirelessly for fast robotic hand response.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-number">02</div>
+        <h3>Wireless System</h3>
+        <p>GRIP uses embedded control and wireless communication to support responsive motion replication.</p>
+      </div>
+      <div class="overview-card">
+        <div class="overview-number">03</div>
+        <h3>Safety Focused</h3>
+        <p>The system is designed for environments where direct human interaction may be unsafe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="fs-features">
+    <div class="fs-sticky-stage">
+      <model-viewer
+        id="gripViewer"
+        src="robot-hand2.glb"
+        alt="3D model of the GRIP robotic hand"
+        camera-controls
+        auto-rotate
+        rotation-per-second="12deg"
+        exposure="0.9"
+        shadow-intensity="1.2"
+        environment-image="neutral"
+        camera-orbit="0deg 75deg auto"
+        min-camera-orbit="auto"
+        max-camera-orbit="auto"
+        style="width:100%;height:100%;position:absolute;top:0;left:0;background:transparent;">
+      </model-viewer>
+
+      <div class="fs-overlay-text" id="fsOverlayText">
+        <div class="fs-feature-index" id="fsIndex">01</div>
+        <h2 id="fsTitle">Sensor Glove Input</h2>
+        <p id="fsDesc">GRIP captures finger motion through the wearable glove and wirelessly transmits that data for real-time robotic hand replication.</p>
+      </div>
+
+      <div class="fs-progress-bar">
+        <div class="fs-progress-fill" id="fsProgressFill"></div>
+      </div>
+
+      <div class="fs-pill-dock" id="fsPillDock">
+        <button class="fs-pill active" data-index="0">Sensor Glove Input</button>
+        <button class="fs-pill" data-index="1">Calibration &amp; Safety</button>
+        <button class="fs-pill" data-index="2">Low-Latency Response</button>
+        <button class="fs-pill" data-index="3">Wireless Control</button>
+      </div>
+    </div>
+
+    <div class="fs-scroll-panels" id="fsScrollPanels">
+      <div class="fs-panel"></div>
+      <div class="fs-panel"></div>
+      <div class="fs-panel"></div>
+      <div class="fs-panel"></div>
+    </div>
+  </section>
+
+  <section id="specs" class="section">
+    <h2>Key Specifications</h2>
+    <div class="specs-wrap">
+      <div class="specs-column">
+        <h3>Arm Specs</h3>
+        <div class="specs-grid">
+          <div class="spec-tile"><span class="spec-label">Pinch Force</span><strong>≥ 10 N</strong></div>
+          <div class="spec-tile"><span class="spec-label">Closing Time</span><strong>≤ 300 ms</strong></div>
+          <div class="spec-tile"><span class="spec-label">Latency</span><strong>≤ 250 ms</strong></div>
+          <div class="spec-tile"><span class="spec-label">Runtime</span><strong>≥ 1.5 hr</strong></div>
+        </div>
+      </div>
+      <div class="specs-column">
+        <h3>Glove Specs</h3>
+        <div class="specs-grid">
+          <div class="spec-tile"><span class="spec-label">Mass</span><strong>≤ 150 g</strong></div>
+          <div class="spec-tile"><span class="spec-label">Runtime</span><strong>≥ 1.5 hr</strong></div>
+          <div class="spec-tile"><span class="spec-label">Latency</span><strong>≤ 250 ms</strong></div>
+          <div class="spec-tile"><span class="spec-label">Wireless</span><strong>nRF24L01</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <p class="gallery-subtitle">Hardware builds, assembly, and the team behind GRIP.</p>
+
+    <div class="gallery-filters">
+      <button class="gf-btn active" data-filter="all">All</button>
+      <button class="gf-btn" data-filter="hardware">Hardware</button>
+      <button class="gf-btn" data-filter="team">Team</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- ── HARDWARE PHOTOS ──
+           Replace the src filenames with your actual uploaded image names.
+           Add class="tall" on items you want to appear taller in the grid.
+           Add or remove <div class="gallery-item"> blocks freely. -->
+
+      <div class="gallery-item hardware tall" data-caption="Robotic hand assembly" onclick="openLightbox(this)">
+        <img src="gallery-hand-1.jpg" alt="Robotic hand assembly">
+        <div class="gallery-caption">Robotic hand assembly</div>
+      </div>
+
+      <div class="gallery-item hardware" data-caption="Glove sensor wiring" onclick="openLightbox(this)">
+        <img src="gallery-glove-1.jpg" alt="Glove sensor wiring">
+        <div class="gallery-caption">Glove sensor wiring</div>
+      </div>
+
+      <div class="gallery-item hardware" data-caption="PCB and electronics" onclick="openLightbox(this)">
+        <img src="gallery-pcb-1.jpg" alt="PCB and electronics">
+        <div class="gallery-caption">PCB and electronics</div>
+      </div>
+
+      <div class="gallery-item hardware" data-caption="PCB Sodering" onclick="openLightbox(this)">
+        <img src="gallery-pcb-2.jpg" alt="PCB Sodering">
+        <div class="gallery-caption">PCB Sodering</div>
+      </div>
+
+      <div class="gallery-item hardware" data-caption="Full system overview" onclick="openLightbox(this)">
+        <img src="gallery-system-1.jpg" alt="Full system overview">
+        <div class="gallery-caption">Full system overview</div>
+      </div>
+
+      <div class="gallery-item hardware tall" data-caption="Glove prototype" onclick="openLightbox(this)">
+        <img src="gallery-glove-2.jpg" alt="Glove prototype">
+        <div class="gallery-caption">Glove prototype</div>
+      </div>
+
+      <div class="gallery-item hardware" data-caption="Final Glove Design" onclick="openLightbox(this)">
+        <img src="gallery-finalglove.jpg" alt="Final Glove Design">
+        <div class="gallery-caption">Final Glove Design</div>
+      </div>
+
+      <!-- ── TEAM PHOTOS ──
+           Same rules — replace src, add/remove blocks freely. -->
+
+      <div class="gallery-item team" data-caption="Group 21 — GRIP Team" onclick="openLightbox(this)">
+        <img src="gallery-team-1.jpg" alt="GRIP Team">
+        <div class="gallery-caption">Group 21 — GRIP Team</div>
+      </div>
+
+      <div class="gallery-item team tall" data-caption="Working session" onclick="openLightbox(this)">
+        <img src="gallery-team-2.jpg" alt="Working session">
+        <div class="gallery-caption">Working session</div>
+      </div>
+
+      <div class="gallery-item team tall" data-caption="Working session" onclick="openLightbox(this)">
+        <img src="gallery-team-3.jpg" alt="Working session">
+        <div class="gallery-caption">Working session</div>
+      </div>
+
+      <div class="gallery-item team" data-caption="Demo day setup" onclick="openLightbox(this)">
+        <img src="gallery-team-4.jpg" alt="Demo day setup">
+        <div class="gallery-caption">Demo day setup</div>
+      </div>
+
+      <div class="gallery-item team" data-caption="Final presentation" onclick="openLightbox(this)">
+        <img src="gallery-team-5.jpg" alt="Final presentation">
+        <div class="gallery-caption">Final presentation</div>
+      </div>
+
+      <div class="gallery-item team" data-caption="Glove Check" onclick="openLightbox(this)">
+        <img src="gallery-team-6.jpg" alt="Glove Check">
+        <div class="gallery-caption">Glove Check</div>
+      </div>
+
+      <div class="gallery-item team" data-caption="Proud Man" onclick="openLightbox(this)">
+        <img src="gallery-team-7.jpg" alt="Proud Man">
+        <div class="gallery-caption">Proud Man</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-prev" onclick="lbNav(-1,event)">&#8249;</button>
+    <button class="lb-next" onclick="lbNav(1,event)">&#8250;</button>
+    <div class="lb-inner">
+      <img id="lbImg" src="" alt="">
+      <p id="lbCaption"></p>
+    </div>
+  </div>
+
+  <section id="documents" class="section">
+    <h2>Project Documents</h2>
+    <div class="docs-grid docs-grid-large">
+      <a class="doc-card" href="Divide and Conquer.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Report</div>
+        <div class="doc-title">Divide and Conquer</div>
+        <div class="doc-type">PDF Document</div>
+      </a>
+      <a class="doc-card" href="Midterm Report GRIP.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Report</div>
+        <div class="doc-title">Midterm Report</div>
+        <div class="doc-type">PDF Document</div>
+      </a>
+      <a class="doc-card" href="SD1 Final Report GRIP.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Final</div>
+        <div class="doc-title">SD1 Final Report</div>
+        <div class="doc-type">PDF Document</div>
+      </a>
+      <a class="doc-card" href="GRIP Conference Paper.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Paper</div>
+        <div class="doc-title">GRIP Conference Paper</div>
+        <div class="doc-type">PDF Document</div>
+      </a>
+      <a class="doc-card" href="CDR Presentation Slide.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Slides</div>
+        <div class="doc-title">CDR Presentation Slide</div>
+        <div class="doc-type">Presentation PDF</div>
+      </a>
+      <a class="doc-card" href="Final Presentation Slide.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Slides</div>
+        <div class="doc-title">Final Presentation Slide</div>
+        <div class="doc-type">Presentation PDF</div>
+      </a>
+      <a class="doc-card featured-doc" href="GRIP SD2 Report.pdf" target="_blank" rel="noopener">
+        <div class="doc-tag">Final</div>
+        <div class="doc-title">SD2 Final Report</div>
+        <div class="doc-type">PDF Document</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="demo" class="section">
+    <h2>Demo &amp; Presentation Videos</h2>
+    <div class="docs-grid docs-grid-large">
+      <a class="doc-card" href="GRIP Senior Design 1 demo video.mp4" target="_blank" rel="noopener">
+        <div class="doc-tag">Video</div>
+        <div class="doc-title">Senior Design Demo Video</div>
+        <div class="doc-type">MP4 Video</div>
+      </a>
+      <a class="doc-card" href="CDR Presentation Video.mp4" target="_blank" rel="noopener">
+        <div class="doc-tag">Video</div>
+        <div class="doc-title">CDR Presentation Video</div>
+        <div class="doc-type">MP4 Video</div>
+      </a>
+      <a class="doc-card" href="Midterm Demonstration Video.mp4" target="_blank" rel="noopener">
+        <div class="doc-tag">Video</div>
+        <div class="doc-title">Midterm Demonstration Video</div>
+        <div class="doc-type">MP4 Video</div>
+      </a>
+      <a class="doc-card" href="Final Presentation Video.mp4" target="_blank" rel="noopener">
+        <div class="doc-tag">Video</div>
+        <div class="doc-title">Final Presentation Video</div>
+        <div class="doc-type">MP4 Video</div>
+      </a>
+      <a class="doc-card" href="Final Demonstration Video.mp4" target="_blank" rel="noopener">
+        <div class="doc-tag">Video</div>
+        <div class="doc-title">Final Demonstration Video</div>
+        <div class="doc-type">MP4 Video</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="team" class="section">
+    <h2>Meet Our Team</h2>
+    <div class="team-showcase">
+      <div class="team-card">
+        <img src="Kane.jpg" alt="Kane McAgy">
+        <div class="name-box">Kane McAgy</div>
+        <div class="team-overlay">
+          <h3>Kane McAgy</h3>
+          <p class="team-role">Electrical Engineering</p>
+          <p class="team-bio">Contributed to the GRIP system design with focus on hardware integration, electrical implementation, and overall system development.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="Christopher.jpg" alt="Christopher Marcoccia">
+        <div class="name-box">Christopher Marcoccia</div>
+        <div class="team-overlay">
+          <h3>Christopher Marcoccia</h3>
+          <p class="team-role">Electrical Engineering</p>
+          <p class="team-bio">Contributed to hardware development and system design for the GRIP platform, with interest in control systems and prosthetic-related applications.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="Rian.jpg" alt="Rian Lowery">
+        <div class="name-box">Rian Lowery</div>
+        <div class="team-overlay">
+          <h3>Rian Lowery</h3>
+          <p class="team-role">Computer Engineering</p>
+          <p class="team-bio">Worked on embedded systems, wireless communication, and software logic for real-time motion replication in GRIP.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="Griseld.jpg" alt="Griseld Xhengo">
+        <div class="name-box">Griseld Xhengo</div>
+        <div class="team-overlay">
+          <h3>Griseld Xhengo</h3>
+          <p class="team-role">Electrical Engineering</p>
+          <p class="team-bio">Supported the design and development of the GRIP system with emphasis on electrical engineering implementation and project integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advisor" class="section">
+    <h2>Group Advisor</h2>
+    <div class="advisor-card">
+      <div class="advisor-photo-wrap">
+        <img src="advisor.jpg" alt="Dr. Saleem Sahawneh" class="advisor-photo">
+        <div class="advisor-accent-circle"></div>
+      </div>
+      <div class="advisor-info">
+        <p class="advisor-label">Faculty Advisor</p>
+        <h3>Dr. Saleem Sahawneh</h3>
+        <p class="advisor-bio">
+          Faculty advisor for Group 21, providing oversight and technical guidance for the GRIP senior design project,
+          including support in system design, evaluation, and project direction.
+        </p>
+        <div class="advisor-meta">
+          <span>UCF EECS</span>
+          <span>Senior Design I</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="committee" class="section">
+    <h2>Review Committee</h2>
+    <div class="committee-grid">
+      <div class="committee-card">
+        <div class="committee-image"><img src="john-aedo.jpg" alt="Dr. John Aedo" class="committee-photo"></div>
+        <div class="committee-info">
+          <h3>Dr. John Aedo</h3>
+          <p>Review Committee</p>
+          <div class="committee-meta">UCF EECS</div>
+        </div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-image"><img src="sudeshna-pal.jpg" alt="Dr. Sudeshna Pal" class="committee-photo"></div>
+        <div class="committee-info">
+          <h3>Dr. Sudeshna Pal</h3>
+          <p>Review Committee</p>
+          <div class="committee-meta">UCF EECS</div>
+        </div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-image"><img src="wei-sun.jpg" alt="Dr. Wei Sun" class="committee-photo"></div>
+        <div class="committee-info">
+          <h3>Dr. Wei Sun</h3>
+          <p>Review Committee</p>
+          <div class="committee-meta">UCF EECS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img src="hand.png" alt="GRIP hand logo" class="footer-hand">
+          <img src="grip-text1.png" alt="GRIP text logo" class="footer-text">
+        </div>
+        <p>© 2026 GRIP • Group 21 • UCF Senior Design</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#specs">Specs</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#documents">Documents</a>
+        <a href="#demo">Demo</a>
+        <a href="#team">Team</a>
+      </div>
+      <div class="footer-social">
+        <span>Follow Us</span>
+        <div class="social-icons">
+          <a href="#">🌐</a>
+          <a href="#">📧</a>
+          <a href="#">🔗</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  const navbar        = document.getElementById("navbar");
+  const menuToggle    = document.querySelector(".menu-toggle");
+  const linkContainer = document.querySelector(".topbar-links");
+  const navLinks      = document.querySelectorAll(".nav-link");
+  const sections      = document.querySelectorAll("section[id]");
+
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+    let current = "";
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 130 && window.scrollY < s.offsetTop + s.offsetHeight)
+        current = s.getAttribute("id");
+    });
+    navLinks.forEach(l => {
+      l.classList.remove("active");
+      if (l.getAttribute("href") === "#" + current) l.classList.add("active");
+    });
+  });
+
+  if (menuToggle) menuToggle.addEventListener("click", () => linkContainer.classList.toggle("show"));
+
+  /* ── Features scroll ── */
+  const FS_FEATURES = [
+    { index:"01", title:"Sensor Glove Input",   desc:"GRIP captures finger motion through the wearable glove and wirelessly transmits that data for real-time robotic hand replication.", orbit:"15deg 75deg auto" },
+    { index:"02", title:"Calibration & Safety", desc:"Calibration captures user range-of-motion while control logic enforces safe motion limits and stable actuation behavior.",            orbit:"90deg 80deg auto" },
+    { index:"03", title:"Low-Latency Response", desc:"The system is designed for responsive, low-latency motion transfer so the robotic hand mirrors user motion as naturally as possible.", orbit:"180deg 75deg auto" },
+    { index:"04", title:"Wireless Control",     desc:"Embedded control and wireless communication allow GRIP to operate remotely without requiring direct wired interaction during use.",    orbit:"35deg 75deg auto" }
+  ];
+
+  (function(){
+    const viewer       = document.getElementById("gripViewer");
+    const overlayText  = document.getElementById("fsOverlayText");
+    const fsIndex      = document.getElementById("fsIndex");
+    const fsTitle      = document.getElementById("fsTitle");
+    const fsDesc       = document.getElementById("fsDesc");
+    const progressFill = document.getElementById("fsProgressFill");
+    const pillDock     = document.getElementById("fsPillDock");
+    const pills        = pillDock ? pillDock.querySelectorAll(".fs-pill") : [];
+    let current        = 0;
+
+    function setFeature(idx, force) {
+      if (idx === current && !force) return;
+      current = idx;
+      const f = FS_FEATURES[idx];
+      overlayText.classList.add("swapping");
+      setTimeout(() => {
+        fsIndex.textContent = f.index;
+        fsTitle.textContent = f.title;
+        fsDesc.textContent  = f.desc;
+        overlayText.classList.remove("swapping");
+      }, 320);
+      if (viewer) viewer.cameraOrbit = f.orbit;
+      pills.forEach((p,i) => p.classList.toggle("active", i === idx));
+      progressFill.style.height = ((idx + 1) / FS_FEATURES.length * 100) + "%";
+    }
+
+    window.addEventListener("scroll", () => {
+      const pc = document.getElementById("fsScrollPanels");
+      if (!pc) return;
+      const t = pc.getBoundingClientRect().top;
+      const h = pc.offsetHeight;
+      const p = Math.max(0, Math.min(1, -t / (h - window.innerHeight)));
+      setFeature(Math.min(FS_FEATURES.length - 1, Math.floor(p * FS_FEATURES.length)));
+    }, { passive:true });
+
+    pills.forEach((pill, i) => {
+      pill.addEventListener("click", () => setFeature(i, true));
+    });
+
+    setFeature(0, true);
+  })();
+
+  /* ── Gallery filters ── */
+  const filterBtns   = document.querySelectorAll(".gf-btn");
+  const galleryItems = document.querySelectorAll(".gallery-item");
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.dataset.filter;
+      galleryItems.forEach(item => {
+        const show = filter === "all" || item.classList.contains(filter);
+        item.style.opacity = show ? "1" : "0";
+        item.style.pointerEvents = show ? "" : "none";
+        setTimeout(() => { item.style.display = show ? "" : "none"; }, show ? 0 : 300);
+      });
+    });
+  });
+
+  /* ── Lightbox ── */
+  let lbItems = [];
+  let lbIndex = 0;
+
+  function openLightbox(el) {
+    lbItems = [...document.querySelectorAll(".gallery-item")].filter(i => i.style.display !== "none");
+    lbIndex = lbItems.indexOf(el);
+    showLb(lbIndex);
+    document.getElementById("lightbox").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function showLb(idx) {
+    document.getElementById("lbImg").src     = lbItems[idx].querySelector("img").src;
+    document.getElementById("lbCaption").textContent = lbItems[idx].dataset.caption || "";
+  }
+
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById("lightbox") && !e.target.classList.contains("lb-close")) return;
+    document.getElementById("lightbox").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function lbNav(dir, e) {
+    e.stopPropagation();
+    lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+    showLb(lbIndex);
+  }
+
+  document.addEventListener("keydown", e => {
+    const lb = document.getElementById("lightbox");
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape")      { lb.classList.remove("open"); document.body.style.overflow = ""; }
+    if (e.key === "ArrowRight")  { lbIndex = (lbIndex + 1) % lbItems.length; showLb(lbIndex); }
+    if (e.key === "ArrowLeft")   { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; showLb(lbIndex); }
+  });
+  </script>
+
+</body>
+</html>
